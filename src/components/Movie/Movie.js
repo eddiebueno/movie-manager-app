@@ -9,7 +9,7 @@ class Movie extends React.Component {
     return (
       <li key={this.props.movieId}>
         <Link to={`/movie/${this.props.movieId}`}>{this.props.name}</Link>
-        <img alt={this.props.name} src={this.props.imageUrl}></img>
+        <img alt={this.props.name} src={this.props.imageUrl} />
         <button onClick={()=>this.context.handleDelete(this.props.MovieId)}>Delete</button>
       </li>
     )

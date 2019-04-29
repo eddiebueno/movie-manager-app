@@ -21,7 +21,7 @@ class MovieList extends React.Component {
     let newmovies =  movies.map(movie => {
       return <Movie movieId = {movie.id} 
         key={movie.id}
-        image = {movie.imageUrl} 
+        imageUrl = {movie.imageUrl} 
         name= {movie.name}
          />
     })
@@ -31,7 +31,7 @@ class MovieList extends React.Component {
           {newmovies}
           <li>
             <Link to='/addmovie'>
-            <button className="addButton">Add Note</button>
+            <button className="addButton">Add Movie</button>
             </Link>
           </li>
         </ul>

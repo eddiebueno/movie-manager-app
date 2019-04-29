@@ -17,7 +17,7 @@ class MovieInfo extends React.Component {
         </li>
         <li>
       <h2>{movie.name}</h2>
-      <img src={movie.imgUrl} alt={movie.name} />
+      <img src={movie.imageUrl} alt={movie.name} />
       <button onClick={() => this.context.handleDelete(movie.id)}>Delete</button>
       </li>
     </ul>

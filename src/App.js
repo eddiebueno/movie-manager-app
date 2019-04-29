@@ -7,6 +7,7 @@ import MovieList from './components/Movie/MovieList';
 import MovieInfo from './components/Movie/MovieInfo';
 import MovieContext from './components/Context/MovieContext';
 import {withRouter} from 'react-router-dom';
+import store from './store';
 
 class App extends React.Component {
   constructor(props){
@@ -19,6 +20,23 @@ class App extends React.Component {
       },
       fromOrigin: true,
     }
+  }
+
+  componentDidMount(){
+    this.getFolders();
+  }
+
+  getFolders = () =>{
+    this.setState({
+      STORE: {
+        folders: store.folders,
+        movies: store.movies,
+      }
+    })
+  }
+
+  handleGoBack = () =>{
+    this.props.history.goBack();
   }
 
   render(){

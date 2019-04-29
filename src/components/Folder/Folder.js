@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './Folder.css';
-import MovieContext from './MovieContext';
+import MovieContext from '../Context/MovieContext';
 
 class Folder extends React.Component  {    
 

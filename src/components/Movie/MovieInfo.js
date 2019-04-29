@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import MovieContext from '../Context/MovieContext';
 
-class MovieInfo extends React.Comonent {
+class MovieInfo extends React.Component {
   static contextType = MovieContext;
 
   render(){
@@ -24,3 +24,5 @@ class MovieInfo extends React.Comonent {
     )
   }
 }
+
+export default MovieInfo;

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 import './App.css';
-import Header from './Header';
-import FolderList from './FolderList';
-import MovieList from './MovieList';
-import MovieInfo from './MovieInfo';
+import Header from './components/Header/Header';
+import FolderList from './components/Folder/FolderList';
+import MovieList from './components/Movie/MovieList';
+import MovieInfo from './components/Movie/MovieInfo';
 import MovieContext from './components/Context/MovieContext';
 import {withRouter} from 'react-router-dom';
 

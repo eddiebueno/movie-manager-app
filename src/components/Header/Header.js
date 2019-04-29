@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import MovieContext from './MovieContext'
+import MovieContext from '../Context/MovieContext'
 
 class HomePage extends React.Component {
   

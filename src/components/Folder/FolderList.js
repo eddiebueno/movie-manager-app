@@ -1,6 +1,6 @@
 import React from 'react';
 import Folder from './Folder';
-import MovieContext from './MovieContext';
+import MovieContext from '../Context/MovieContext';
 import {Link} from 'react-router-dom';
 
 class FolderList extends React.Component  {

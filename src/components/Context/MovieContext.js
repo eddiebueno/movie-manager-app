@@ -6,7 +6,9 @@ const MovieContext = React.createContext({
   handleDelete: () => {},
   handleGoBack: () => {},
   addFolderSubmit: () => {},
-  addMovieSubmit: () => {}
+  addMovieSubmit: () => {},
+  newFolderName: '',
+  newFolderValid: false,
 
   })
 

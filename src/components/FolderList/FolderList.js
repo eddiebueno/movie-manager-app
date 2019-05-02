@@ -1,5 +1,5 @@
 import React from 'react';
-import Folder from './Folder';
+import Folder from '../Folder/Folder';
 import MovieContext from '../Context/MovieContext';
 import {Link} from 'react-router-dom';
 

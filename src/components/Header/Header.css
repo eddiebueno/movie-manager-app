@@ -1,0 +1,29 @@
+.Header{
+  height: 40px;
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+}
+.Header h1 {
+  margin: 0;
+}
+
+.Header a {
+  color: #444;
+  text-decoration: none;
+}
+
+.Header__not-logged-in{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Header__not-logged-in a:last-child {
+  background: rgb(255, 121, 121);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-left: 10px;
+}

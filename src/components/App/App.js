@@ -1,14 +1,19 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
-import Header from './components/Header/Header';
-import FolderList from './components/Folder/FolderList';
-import AddFolder from './components/AddFolder/AddFolder';
-import MovieList from './components/Movie/MovieList';
-import MovieInfo from './components/Movie/MovieInfo';
-import MovieContext from './components/Context/MovieContext';
+import Header from '../Header/Header';
+import FolderList from '../FolderList/FolderList';
+import AddFolder from '../AddFolder/AddFolder';
+import MovieList from '../Movie/MovieList';
+import MovieInfo from '../Movie/MovieInfo';
+import MovieContext from '../Context/MovieContext';
 import {withRouter} from 'react-router-dom';
-import store from './store';
+import PrivateRoute from '../Utils/PrivateRoute';
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
+import LoginPage from '../../routes/LoginPage/LoginPage';
+import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
+
+import store from '../../store';
 
 class App extends React.Component {
   constructor(props){
@@ -84,9 +89,25 @@ class App extends React.Component {
         addFolderSubmit: this.addFolderSubmit,
         addMovieSubmit: this.addMovieSubmit,
       }}>
+      <header>
+        <Header />
+      </header>
       <main className='App'>
-        <section>
-          <Route path='/' render={()=> <Header />} />
+        <Switch>
+          <PublicOnlyRoute 
+            path={'/login'}
+            component={LoginPage}
+          />
+          <PublicOnlyRoute 
+            path={'/register'}
+            component={RegistrationPage}
+          />
+          {/* <PrivateRoute 
+            path={'/folder/:id'}
+            component={}
+          /> */}
+        </Switch>
+        {/* <section>
           <Route exact path='/' render={()=> <FolderList />}/>
           <Route exact path='/' render={()=> <MovieList />}/>
         </section>
@@ -102,7 +123,7 @@ class App extends React.Component {
 
         <section>
           <Route path='/addfolder' component={AddFolder} />
-        </section>
+        </section> */}
 
       </main>
       

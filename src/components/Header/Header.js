@@ -43,7 +43,10 @@ class HomePage extends React.Component {
   return (
     <nav className='Header'>
       <h1>
-        <Link to='/' onClick={() => this.context.changeOrigin(true)}>Movie Manager</Link>
+        <Link to={{
+          pathname: '/',
+          state: {...this.state, display:[]}
+        }} replace>Movie Manager</Link>
       </h1>
       {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
     </nav>

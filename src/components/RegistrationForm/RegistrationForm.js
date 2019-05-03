@@ -25,9 +25,7 @@ export default class RegistrationForm extends Component {
           this.props.onRegistrationSuccess()
        })
        .catch(res => {
-         //TODO:
-        console.log('<<<<< getting here');
-         this.setState({ error: res.message })
+         this.setState({ error: res.error })
        })
   }
 

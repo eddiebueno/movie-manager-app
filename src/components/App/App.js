@@ -2,7 +2,6 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
-import FolderList from '../FolderList/FolderList';
 import AddFolder from '../AddFolder/AddFolder';
 import MovieList from '../Movie/MovieList';
 import MovieInfo from '../Movie/MovieInfo';
@@ -12,49 +11,45 @@ import PrivateRoute from '../Utils/PrivateRoute';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
+import SearchForm from '../SearchForm/SearchForm';
+import MovieSearchDisplay from '../MovieSearchDisplay/MovieSearchDisplay';
 
-import store from '../../store';
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       STORE:{
-        folders: [],
-        movies: [],
-        selected: null
+        userMovies: [],
+        searchMovies: [],
       },
+      selected: null,
+      searchTerm: '',
+      loading:false,
       fromOrigin: true,
-      newFolderName: '',
-      newFolderMessage: '',
-      newFolderValid: false,
     }
   }
 
-  addFolderSubmit = ()=>{
-
+  apiCall = (searchTerm) =>{
+    let url = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${searchTerm}`;
+    return fetch(url)
   }
 
-  addMovieSubmit = ()=>{
-
+  onSearchTermChange =(searchTerm) =>{
+    this.setState({searchTerm})
   }
 
-  changeFolderName = (name) =>{
-    let message = '';
-    let valid = false;
-    if(name.length ===0){
-      message='No name entered';
-    }
-    if (this.state.STORE.folders.find(folder=>folder.name === name)){
-      message = 'Duplicate folder name';
-    }
-    else{
-      valid = true;
-    }
+  onSearchSubmit = (e)=>{
+    e.preventDefault();
+    const searchTerm = e.currentTarget['search-term'].value;
     this.setState({
-      newFolderName: name,
-      newFolderMessage: message,
-      newFolderValid: valid
+      ...this.state,
+      STORE:{
+        ...this.state.STORE,
+        searchMovies:[]
+      },
+      searchTerm,
+      loading: true
     })
   }
 
@@ -62,38 +57,67 @@ class App extends React.Component {
     this.getFolders();
   }
 
+  componentDidUpdate = () =>{
+    if (this.state.loading){
+      //TODO:
+      console.log('Fetching...');
+      this.apiCall(this.state.searchTerm)
+        .then(res=>res.json())
+        .then((data=>{
+          this.updateData(data)
+        }))
+    }
+  }
+
   getFolders = () =>{
-    this.setState({
-      STORE: {
-        folders: store.folders,
-        movies: store.movies,
-      }
-    })
+    let folders;
+    let movies;
+
   }
 
   handleGoBack = () =>{
     this.props.history.goBack();
   }
 
+  updateData = (data) =>{
+    let count = 0;
+    let searchMovies = [];
+    if (data["Response"]){
+      count = data["Search"].length
+    }
+    for (let i =0; i <count; i++){
+      searchMovies.push(data["Search"][i])
+    }
+    //TODO:
+    console.log('displaying results:',searchMovies);
+    this.setState({
+      ...this.state,
+      STORE:{
+        ...this.state.STORE,
+        searchMovies,
+      },
+      loading:false
+    })
+  }
+
   render(){
     return(
       <MovieContext.Provider value={{
         store: this.state.STORE,
-        newFolderName: this.newFolderName,
-        newFolderValid: this.newFolderValid,
-        newFolderMessage: this.newFolderMessage,
-        changeFolderName: this.changeFolderName,
-        newMovieFolder: 0,
-        handleDelete: this.handleDelete,
+        handleRate: this.handleRate,
         handleGoBack: this.handleGoBack,
-        addFolderSubmit: this.addFolderSubmit,
-        addMovieSubmit: this.addMovieSubmit,
+        onSearchTermChange: this.onSearchTermChange,
+        onSearchSubmit: this.onSearchSubmit,
+        searchTerm: this.state.searchTerm,
+        loading:this.state.loading,
+
       }}>
       <header>
         <Header />
       </header>
       <main className='App'>
         <Switch>
+        
           <PublicOnlyRoute 
             path={'/login'}
             component={LoginPage}
@@ -102,29 +126,19 @@ class App extends React.Component {
             path={'/register'}
             component={RegistrationPage}
           />
-          {/* <PrivateRoute 
-            path={'/folder/:id'}
-            component={}
-          /> */}
+          <PrivateRoute 
+            path={'/'}
+            component={SearchForm}
+          />
         </Switch>
-        {/* <section>
-          <Route exact path='/' render={()=> <FolderList />}/>
-          <Route exact path='/' render={()=> <MovieList />}/>
-        </section>
 
-        <section>
-          <Route path='/folder/:id' render={(props)=> <FolderList match={props.match}/>}/>
-          <Route path='/folder/:id' render={(props)=> <MovieList match={props.match}/>}/>
-        </section>
+          <Route 
+            path='/movie/:id' 
+            render={(props) => <MovieInfo match={props.match}  />} />
 
-        <section>
-          <Route path='/movie/:id' render={(props) => <MovieInfo match={props.match}  />} />
-        </section>
 
-        <section>
           <Route path='/addfolder' component={AddFolder} />
-        </section> */}
-
+        <MovieSearchDisplay />
       </main>
       
       </MovieContext.Provider>

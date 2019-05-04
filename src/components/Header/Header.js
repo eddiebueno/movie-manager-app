@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import MovieContext from '../Context/MovieContext';
+import MovieContext from '../../context/MovieContext';
 import TokenService from '../../services/token-service';
 import './Header.css';
 

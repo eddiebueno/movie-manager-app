@@ -2,17 +2,11 @@ import React from 'react'
 
 const MovieContext = React.createContext({
   store: {},
-  newMovieFolder: 0,
-  handleRate: () => {},
+  handleReviewSubmit: () => {},
   handleGoBack: () => {},
-  addFolderSubmit: () => {},
-  addMovieSubmit: () => {},
   onSearchTermChange: ()=>{},
-  newFolderName: '',
-  newFolderValid: false,
-  selected: null,
+  onSearchSubmit: ()=>{},
   searchTerm: '',
-  display:[],
   loading:false,
 
 

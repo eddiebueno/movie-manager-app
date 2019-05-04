@@ -1,10 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import MovieContext from '../Context/MovieContext';
+import MovieContext from '../../context/MovieContext';
 import './Movie.css';
 
 class Movie extends React.Component {
   static contextType = MovieContext;
+
+  changeRoute = (movieId)=>{
+    let path = '/';
+    this.props.history.push(path);
+  }
 
   render(){
     return (
@@ -15,8 +20,8 @@ class Movie extends React.Component {
         <li className="movie-image">
           <img alt={this.props.name} src={this.props.imageUrl} className="poster"/>
         </li>
-        <li className="rate-button">
-          <button onClick={()=>this.context.handleRate(this.props.MovieId)}>Rate</button>
+        <li className="review-button">
+          <button onClick={()=>this.changeRoute(this.props.MovieId)}>Review</button>
         </li>
       </ul>
     )

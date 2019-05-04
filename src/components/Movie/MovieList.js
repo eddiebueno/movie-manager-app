@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Movie from './Movie';
-import MovieContext from '../Context/MovieContext';
+import MovieContext from '../../context/MovieContext';
 
 class MovieList extends React.Component {
   static contextType = MovieContext;
@@ -18,7 +18,7 @@ class MovieList extends React.Component {
       movies = this.context.store.movies;
     }
 
-    let newmovies =  movies.map(movie => {
+    let newMovies =  movies.map(movie => {
       return <Movie movieId = {movie.id} 
         key={movie.id}
         imageUrl = {movie.imageUrl} 
@@ -28,7 +28,7 @@ class MovieList extends React.Component {
     return (
       <div className="rightBar">
         <ul className="movieList">
-          {newmovies}
+          {newMovies}
           <li>
             <Link to='/addmovie'>
             <button className="addButton">Add Movie</button>

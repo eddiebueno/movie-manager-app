@@ -1,18 +1,20 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import './App.css';
-import Header from '../Header/Header';
-import AddFolder from '../AddFolder/AddFolder';
-import MovieList from '../Movie/MovieList';
-import MovieInfo from '../Movie/MovieInfo';
-import MovieContext from '../Context/MovieContext';
-import {withRouter} from 'react-router-dom';
-import PrivateRoute from '../Utils/PrivateRoute';
-import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
+import {Route, Switch, withRouter} from 'react-router-dom';
+import HomePage from '../../routes/HomePage/HomePage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
-import SearchForm from '../SearchForm/SearchForm';
-import MovieSearchDisplay from '../MovieSearchDisplay/MovieSearchDisplay';
+import MoviePage from '../../routes/MoviePage/MoviePage';
+
+import Header from '../Header/Header';
+import MovieList from '../Movie/MovieList';
+import MovieInfo from '../MovieInfo/MovieInfo';
+import MovieContext from '../../context/MovieContext';
+import {PrivateRoute, PublicOnlyRoute} from '../Utils';
+
+import './App.css';
+
+
+
 
 
 class App extends React.Component {
@@ -54,7 +56,6 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.getFolders();
   }
 
   componentDidUpdate = () =>{
@@ -67,12 +68,6 @@ class App extends React.Component {
           this.updateData(data)
         }))
     }
-  }
-
-  getFolders = () =>{
-    let folders;
-    let movies;
-
   }
 
   handleGoBack = () =>{
@@ -104,7 +99,7 @@ class App extends React.Component {
     return(
       <MovieContext.Provider value={{
         store: this.state.STORE,
-        handleRate: this.handleRate,
+        handleReviewSubmit: this.handleReviewSubmit,
         handleGoBack: this.handleGoBack,
         onSearchTermChange: this.onSearchTermChange,
         onSearchSubmit: this.onSearchSubmit,
@@ -127,18 +122,17 @@ class App extends React.Component {
             component={RegistrationPage}
           />
           <PrivateRoute 
-            path={'/'}
-            component={SearchForm}
+            exact path={'/'}
+            component = {HomePage}
           />
+
+          
         </Switch>
-
-          <Route 
+        <PrivateRoute 
             path='/movie/:id' 
-            render={(props) => <MovieInfo match={props.match}  />} />
+            component ={MoviePage}
+          />
 
-
-          <Route path='/addfolder' component={AddFolder} />
-        <MovieSearchDisplay />
       </main>
       
       </MovieContext.Provider>

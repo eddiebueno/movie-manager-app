@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieContext from '../Context/MovieContext';
+import MovieContext from '../../context/MovieContext';
 import Movie from '../Movie/Movie';
 
 export default class MovieSearchDisplay extends React.Component {
@@ -14,6 +14,8 @@ export default class MovieSearchDisplay extends React.Component {
           key={movie.imdbID}
           imageUrl = {movie.Poster} 
           name= {movie.Title}
+          history={this.props.history}
+          movieId={movie.imdbID}
            />
       })
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieContext from '../Context/MovieContext';
+import MovieContext from '../../context/MovieContext';
 
 export default class SearchForm extends React.Component {
   static contextType = MovieContext;

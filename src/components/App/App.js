@@ -21,10 +21,8 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      STORE:{
-        userMovies: [],
-        searchMovies: [],
-      },
+      userMovies: [],
+      searchMovies: [],
       selected: null,
       searchTerm: '',
       loading:false,
@@ -37,6 +35,13 @@ class App extends React.Component {
     return fetch(url)
   }
 
+  clearSearchResults= ()=>{
+    this.setState({
+      ...this.state,
+      searchMovies: []
+    })
+  }
+
   onSearchTermChange =(searchTerm) =>{
     this.setState({searchTerm})
   }
@@ -46,10 +51,7 @@ class App extends React.Component {
     const searchTerm = e.currentTarget['search-term'].value;
     this.setState({
       ...this.state,
-      STORE:{
-        ...this.state.STORE,
-        searchMovies:[]
-      },
+      searchMovies:[],
       searchTerm,
       loading: true
     })
@@ -83,14 +85,9 @@ class App extends React.Component {
     for (let i =0; i <count; i++){
       searchMovies.push(data["Search"][i])
     }
-    //TODO:
-    console.log('displaying results:',searchMovies);
     this.setState({
       ...this.state,
-      STORE:{
-        ...this.state.STORE,
-        searchMovies,
-      },
+      searchMovies,
       loading:false
     })
   }
@@ -98,13 +95,16 @@ class App extends React.Component {
   render(){
     return(
       <MovieContext.Provider value={{
-        store: this.state.STORE,
+        userMovies: this.state.userMovies,
+        searchMovies: this.state.searchMovies,
         handleReviewSubmit: this.handleReviewSubmit,
         handleGoBack: this.handleGoBack,
         onSearchTermChange: this.onSearchTermChange,
         onSearchSubmit: this.onSearchSubmit,
         searchTerm: this.state.searchTerm,
         loading:this.state.loading,
+        clearSearchResults: this.clearSearchResults,
+  
 
       }}>
       <header>

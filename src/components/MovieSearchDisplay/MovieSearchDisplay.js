@@ -5,8 +5,12 @@ import Movie from '../Movie/Movie';
 export default class MovieSearchDisplay extends React.Component {
   static contextType = MovieContext;
 
+  componentWillUnmount(){
+    this.context.clearSearchResults();
+  }
+
   render(){
-    let movies = this.context.store.searchMovies;
+    let movies = this.context.searchMovies;
     let newmovies = [];
     if (movies){
       newmovies =  movies.map(movie => {

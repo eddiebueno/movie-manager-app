@@ -28,7 +28,7 @@ export default class ReviewForm extends React.Component{
           placeholder='Type a review...'
         />
         <label htmlFor='rating' className='rating'>
-        Rate this movie
+        Rate this movie:
         </label>
         <input type='number' step='any' min='1' max='10'></input>
 

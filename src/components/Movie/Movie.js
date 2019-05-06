@@ -20,9 +20,6 @@ class Movie extends React.Component {
         <li className="movie-image">
           <img alt={this.props.name} src={this.props.imageUrl} className="poster"/>
         </li>
-        <li className="review-button">
-          <button onClick={()=>this.changeRoute(this.props.MovieId)}>Review</button>
-        </li>
       </ul>
     )
   }

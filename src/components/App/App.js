@@ -12,19 +12,18 @@ import {PrivateRoute, PublicOnlyRoute} from '../Utils';
 import './App.css';
 
 
-
-
-
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      userReviews:[],
       userMovies: [],
       searchMovies: [],
       selected: null,
       searchTerm: '',
       loading:false,
       fromOrigin: true,
+      
     }
   }
 
@@ -74,6 +73,10 @@ class App extends React.Component {
     this.props.history.goBack();
   }
 
+  setReviews=(userReviews)=>{
+    this.setState({userReviews})
+  }
+
 
   updateData = (data) =>{
     let count = 0;
@@ -94,6 +97,7 @@ class App extends React.Component {
   render(){
     return(
       <MovieContext.Provider value={{
+        userReviews: this.state.userReviews,
         userMovies: this.state.userMovies,
         searchMovies: this.state.searchMovies,
         handleReviewSubmit: this.handleReviewSubmit,
@@ -103,6 +107,7 @@ class App extends React.Component {
         searchTerm: this.state.searchTerm,
         loading:this.state.loading,
         clearSearchResults: this.clearSearchResults,
+        setReviews: this.setReviews,
   
 
       }}>

@@ -39,6 +39,18 @@ class HomePage extends React.Component {
     )
   }
 
+  renderMyReviews() {
+    return (
+      <div className="Header__logged-in">
+        <Link
+        //TODO:
+          to=''>
+          My Reviews
+        </Link>
+      </div>
+    )
+  }
+
   render(){  
   return (
     <nav className='Header'>
@@ -48,6 +60,7 @@ class HomePage extends React.Component {
           state: {...this.state, display:[]}
         }} replace>Movie Manager</Link>
       </h1>
+      {TokenService.hasAuthToken() ? this.renderMyReviews() : '' }
       {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
     </nav>
   );

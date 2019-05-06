@@ -1,6 +1,7 @@
 import React from 'react'
 
 const MovieContext = React.createContext({
+  userReviews:[],
   searchMovies: [],
   userMovies: [],
   searchTerm: '',
@@ -10,6 +11,7 @@ const MovieContext = React.createContext({
   onSearchTermChange: ()=>{},
   onSearchSubmit: ()=>{},
   clearSearchResults: ()=>{},
+  setReviews: ()=>{},
 
 
   })

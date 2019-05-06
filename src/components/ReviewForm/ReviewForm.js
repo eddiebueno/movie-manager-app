@@ -10,16 +10,17 @@ export default class ReviewForm extends React.Component{
     e.preventDefault();
     const movieId = this.props.match.params.id;
     const {text,rating} = e.target;
-    MovieApiService.postReview(movieId,text.value,rating)
+    MovieApiService.postReview(movieId,text.value,Number(rating.value))
       .then(()=>{
         text.value='';
+        rating.value='';
       })
       .catch(this.context.setError)
   }
 
   render(){
     return(
-      <form className="review-form">
+      <form className="review-form" onSubmit={this.handleReviewSubmit}>
         <Textarea 
           required
           aria-label='Type a review...'
@@ -30,7 +31,7 @@ export default class ReviewForm extends React.Component{
         <label htmlFor='rating' className='rating'>
         Rate this movie:
         </label>
-        <input type='number' step='any' min='1' max='10'></input>
+        <input type='number' name='rating' id='rating' step='any' min='1' max='10'></input>
 
         <Button type='submit'>
           Post review

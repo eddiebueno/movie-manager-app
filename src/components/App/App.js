@@ -1,13 +1,11 @@
 import React from 'react';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {Switch, withRouter} from 'react-router-dom';
 import HomePage from '../../routes/HomePage/HomePage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import MoviePage from '../../routes/MoviePage/MoviePage';
 
 import Header from '../Header/Header';
-import MovieList from '../Movie/MovieList';
-import MovieInfo from '../MovieInfo/MovieInfo';
 import MovieContext from '../../context/MovieContext';
 import {PrivateRoute, PublicOnlyRoute} from '../Utils';
 
@@ -75,6 +73,7 @@ class App extends React.Component {
   handleGoBack = () =>{
     this.props.history.goBack();
   }
+
 
   updateData = (data) =>{
     let count = 0;

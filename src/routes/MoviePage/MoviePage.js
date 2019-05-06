@@ -8,7 +8,7 @@ class MoviePage extends React.Component {
     return(
       <>
         <MovieInfo match={this.props.match}/>
-        <ReviewForm />
+        <ReviewForm match={this.props.match}/>
       </>
     )
   }

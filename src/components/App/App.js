@@ -13,71 +13,7 @@ import './App.css';
 
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      userReviews:[],
-      userMovies: [],
-      searchMovies: [],
-      selected: null,
-      searchTerm: '',
-      loading:false,
-      fromOrigin: true,
-      
-    }
-  }
-
-  apiCall = (searchTerm) =>{
-    let url = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${searchTerm}`;
-    return fetch(url)
-  }
-
-  clearSearchResults= ()=>{
-    this.setState({
-      ...this.state,
-      searchMovies: []
-    })
-  }
-
-  onSearchTermChange =(searchTerm) =>{
-    this.setState({searchTerm})
-  }
-
-  onSearchSubmit = (e)=>{
-    e.preventDefault();
-    const searchTerm = e.currentTarget['search-term'].value;
-    this.setState({
-      ...this.state,
-      searchMovies:[],
-      searchTerm,
-      loading: true
-    })
-  }
-
-  componentDidMount(){
-  }
-
-  componentDidUpdate = () =>{
-    if (this.state.loading){
-      //TODO:
-      console.log('Fetching...');
-      this.apiCall(this.state.searchTerm)
-        .then(res=>res.json())
-        .then((data=>{
-          this.updateData(data)
-        }))
-    }
-  }
-
-  handleGoBack = () =>{
-    this.props.history.goBack();
-  }
-
-  setReviews=(userReviews)=>{
-    this.setState({userReviews})
-  }
-
-
+  
   updateData = (data) =>{
     let count = 0;
     let searchMovies = [];
@@ -96,21 +32,7 @@ class App extends React.Component {
 
   render(){
     return(
-      <MovieContext.Provider value={{
-        userReviews: this.state.userReviews,
-        userMovies: this.state.userMovies,
-        searchMovies: this.state.searchMovies,
-        handleReviewSubmit: this.handleReviewSubmit,
-        handleGoBack: this.handleGoBack,
-        onSearchTermChange: this.onSearchTermChange,
-        onSearchSubmit: this.onSearchSubmit,
-        searchTerm: this.state.searchTerm,
-        loading:this.state.loading,
-        clearSearchResults: this.clearSearchResults,
-        setReviews: this.setReviews,
-  
-
-      }}>
+      <>
       <header>
         <Header />
       </header>
@@ -139,7 +61,7 @@ class App extends React.Component {
 
       </main>
       
-      </MovieContext.Provider>
+      </>
     )
   }
 }

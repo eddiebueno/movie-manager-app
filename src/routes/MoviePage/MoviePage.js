@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieInfo from '../../components/MovieInfo/MovieInfo';
 import ReviewForm from '../../components/ReviewForm/ReviewForm';
+import ReviewList from '../../components/ReviewList/ReviewList';
 import MovieApiService from '../../services/movie-api-service';
 import MovieContext from '../../context/MovieContext';
 
@@ -24,28 +25,11 @@ class MoviePage extends React.Component {
         <>
           <MovieInfo history={this.props.history} match={this.props.match}/>
           <ReviewForm match={this.props.match}/>
-          <UserReviews reviews={this.context.userReviews}/>
+          <ReviewList reviews={this.context.userReviews}/>
         </>
       )
     }
   }
-}
-
-function UserReviews({reviews=[]}){
-  return(
-    <ul className="user-movie-reviews">
-      {reviews.map(review=>
-        <li key={review.id} className="user-review">
-          <p className="review-text">
-            {review.text}
-          </p>
-          <p className="review-rating">
-            {review.rating}
-          </p>
-        </li>
-      )}
-    </ul>
-  )
 }
 
 export default MoviePage;

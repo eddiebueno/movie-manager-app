@@ -36,7 +36,7 @@ const MovieApiService ={
     )
   },
   getUserReviews(user_id){
-    return fetch(`${config.API_ENDPOINT}/${user_id}/reviews`,{
+    return fetch(`${config.API_ENDPOINT}/users/${user_id}/reviews`,{
       method: 'GET',
       headers:{
         'content-type': 'application/json',

@@ -1,15 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import MovieContext from '../../context/MovieContext';
 import TokenService from '../../services/token-service';
+import UserService from '../../services/user-service';
 import './Header.css';
 
 class HomePage extends React.Component {
-  
-  static contextType = MovieContext;
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
+    UserService.clearUserId();
   }
 
   renderLogoutLink() {
@@ -40,11 +39,13 @@ class HomePage extends React.Component {
   }
 
   renderMyReviews() {
+    console.log(this.context);
+    const userReviewRoute = `/users/${UserService.getUserId()}/reviews`;
     return (
       <div className="Header__logged-in">
         <Link
         //TODO:
-          to=''>
+          to={userReviewRoute}>
           My Reviews
         </Link>
       </div>

@@ -6,7 +6,6 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import MoviePage from '../../routes/MoviePage/MoviePage';
 
 import Header from '../Header/Header';
-import MovieContext from '../../context/MovieContext';
 import {PrivateRoute, PublicOnlyRoute} from '../Utils';
 
 import './App.css';

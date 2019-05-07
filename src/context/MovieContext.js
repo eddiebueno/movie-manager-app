@@ -6,8 +6,8 @@ const MovieContext = React.createContext({
   userMovies: [],
   searchTerm: '',
   loading:false,
+  fromOrigin: true,
   handleReviewSubmit: () => {},
-  handleGoBack: () => {},
   onSearchTermChange: ()=>{},
   onSearchSubmit: ()=>{},
   clearSearchResults: ()=>{},
@@ -28,7 +28,6 @@ export class MovieProvider extends React.Component {
       selected: null,
       searchTerm: '',
       loading:false,
-      fromOrigin: true,
       
     }
   }
@@ -73,10 +72,6 @@ export class MovieProvider extends React.Component {
           this.updateData(data)
         }))
     }
-  }
-
-  handleGoBack = () =>{
-    this.props.history.goBack();
   }
 
   setReviews=(userReviews)=>{

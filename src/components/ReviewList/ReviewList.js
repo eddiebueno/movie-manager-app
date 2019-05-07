@@ -13,7 +13,6 @@ class ReviewList extends React.Component {
       </p>
     </li>
     );
-    console.log('new reviews:',reviews);
     return(
       <ul>
         {reviews}

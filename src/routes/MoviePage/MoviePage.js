@@ -22,7 +22,7 @@ class MoviePage extends React.Component {
     else{
       return(
         <>
-          <MovieInfo match={this.props.match}/>
+          <MovieInfo history={this.props.history} match={this.props.match}/>
           <ReviewForm match={this.props.match}/>
           <UserReviews reviews={this.context.userReviews}/>
         </>

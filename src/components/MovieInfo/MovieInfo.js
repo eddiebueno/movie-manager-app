@@ -23,6 +23,10 @@ class MovieInfo extends React.Component {
       })
   }
 
+  handleGoBack(){
+    this.props.history.goBack();
+  }
+
   render(){
     
 
@@ -36,7 +40,7 @@ class MovieInfo extends React.Component {
       return(
         <ul>
           <li>
-            <button onClick={() => this.context.handleGoBack()}>Go Back</button>  
+            <button onClick={() => this.handleGoBack()}>Go Back</button>  
           </li>
           <li >
             <div className="col-6">

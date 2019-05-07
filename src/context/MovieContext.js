@@ -100,8 +100,21 @@ export class MovieProvider extends React.Component {
     })
   }
   render() {
-    const {userReviews, userMovies, searchMovies, searchTerm, loading} = this.state;
-    const { handleReviewSubmit, handleGoBack, onSearchTermChange, onSearchSubmit, clearSearchResults, setReviews} = this;
+    const {
+      userReviews,
+      userMovies,
+      searchMovies,
+      searchTerm,
+      loading
+    } = this.state;
+    const {
+      handleReviewSubmit,
+      handleGoBack,
+      onSearchTermChange,
+      onSearchSubmit,
+      clearSearchResults,
+      setReviews
+    } = this;
     return (
       <MovieContext.Provider value={{
         userReviews,

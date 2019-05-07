@@ -100,24 +100,24 @@ export class MovieProvider extends React.Component {
     })
   }
   render() {
-return (
-  <MovieContext.Provider value={{
-    userReviews: this.state.userReviews,
-    userMovies: this.state.userMovies,
-    searchMovies: this.state.searchMovies,
-    handleReviewSubmit: this.handleReviewSubmit,
-    handleGoBack: this.handleGoBack,
-    onSearchTermChange: this.onSearchTermChange,
-    onSearchSubmit: this.onSearchSubmit,
-    searchTerm: this.state.searchTerm,
-    loading:this.state.loading,
-    clearSearchResults: this.clearSearchResults,
-    setReviews: this.setReviews,
-
-
-  }}>
-   {this.props.children}
-  </MovieContext.Provider>
-  )
+    const {userReviews, userMovies, searchMovies, searchTerm, loading} = this.state;
+    const { handleReviewSubmit, handleGoBack, onSearchTermChange, onSearchSubmit, clearSearchResults, setReviews} = this;
+    return (
+      <MovieContext.Provider value={{
+        userReviews,
+        userMovies,
+        searchMovies,
+        searchTerm,
+        loading,
+        handleReviewSubmit,
+        handleGoBack,
+        onSearchTermChange,
+        onSearchSubmit,
+        clearSearchResults,
+        setReviews,
+      }}>
+      {this.props.children}
+      </MovieContext.Provider>
+      )
   }
 }

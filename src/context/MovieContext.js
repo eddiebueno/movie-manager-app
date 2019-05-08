@@ -89,7 +89,6 @@ export class MovieProvider extends React.Component {
     for (let i =0; i <count; i++){
       searchMovies.push(data["Search"][i])
     }
-    console.log(searchMovies);
     searchMovies = this.clearDuplicateMovies(searchMovies);
     this.setState({
       ...this.state,

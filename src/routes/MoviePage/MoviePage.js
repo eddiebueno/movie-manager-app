@@ -9,13 +9,17 @@ class MoviePage extends React.Component {
   static contextType = MovieContext;
 
   componentDidMount(){
+    this.fetchReviews();
+  }
+
+  fetchReviews =()=>{
     const {id} = this.props.match.params;
     MovieApiService.getMovieReviews(id)
       .then(data=>{
         this.context.setReviews(data);
       })
-
   }
+
   render(){
     if (this.context.loading){
       return <p>Loading...</p>
@@ -24,7 +28,7 @@ class MoviePage extends React.Component {
       return(
         <>
           <MovieInfo history={this.props.history} match={this.props.match}/>
-          <ReviewForm match={this.props.match}/>
+          <ReviewForm updateReviews={this.fetchReviews} match={this.props.match}/>
           <ReviewList reviews={this.context.userReviews}/>
         </>
       )

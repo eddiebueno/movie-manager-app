@@ -2,7 +2,7 @@ import React from 'react';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import MovieSearchDisplay from '../../components/MovieSearchDisplay/MovieSearchDisplay';
 
-class Search extends React.Component{
+class HomePage extends React.Component{
 
   render(){
     return(
@@ -14,4 +14,4 @@ class Search extends React.Component{
   }
 }
 
-export default Search;
+export default HomePage;

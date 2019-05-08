@@ -33,10 +33,10 @@ class App extends React.Component {
   render(){
     return(
       <>
-      <header>
+      <header className="App__header">
         <Header />
       </header>
-      <main className='App'>
+      <main className='App__main'>
         <Switch>
         
           <PublicOnlyRoute 

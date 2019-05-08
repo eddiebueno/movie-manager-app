@@ -4,7 +4,7 @@ import TokenService from '../../services/token-service';
 import UserService from '../../services/user-service';
 import './Header.css';
 
-class HomePage extends React.Component {
+class Header extends React.Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
@@ -57,7 +57,9 @@ class HomePage extends React.Component {
         <Link to={{
           pathname: '/',
           state: {...this.state, display:[]}
-        }} replace>Movie Manager</Link>
+        }} replace>
+          Movie Manager
+        </Link>
       </h1>
       {TokenService.hasAuthToken() ? this.renderMyReviews() : '' }
       {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
@@ -65,4 +67,4 @@ class HomePage extends React.Component {
   );
 }
 }
-export default HomePage;
+export default Header;

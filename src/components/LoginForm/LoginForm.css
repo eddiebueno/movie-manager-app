@@ -1,0 +1,58 @@
+body * {
+  box-sizing: border-box;
+}
+
+.LoginForm {
+  width: 400px;
+  height: auto;
+  padding: 40px;
+  margin: 0 auto;
+  border-radius: 3px;
+  border: black 2px;
+}
+
+.title{
+  width: 100%;
+  line-height: 38px;
+  font-size: 35px;
+  font-weight: 300;
+  color: black;
+  text-align: center;
+  letter-spacing: 0;
+  margin: 0 auto 30px;
+}
+
+input, button{
+  border: 2px solid lightgrey;
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 14px;
+  text-align: left;
+  padding: 15px;
+  border-radius: 3px;
+  background: #fcfcfc;
+}
+
+input{
+  margin: 0 auto 20px;
+}
+
+button{
+  margin-top: 20px;
+  background-color: lightgreen;
+  color: white;
+  height: auto;
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.username,.password{
+  display:block;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

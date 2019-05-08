@@ -14,6 +14,7 @@ export default class ReviewForm extends React.Component{
       .then(()=>{
         text.value='';
         rating.value='';
+        this.props.updateReviews();
       })
       .catch(this.context.setError)
   }

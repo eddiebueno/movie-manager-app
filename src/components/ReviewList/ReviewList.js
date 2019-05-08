@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieContext from '../../context/MovieContext';
+import {Link} from 'react-router-dom';
 
 
 class ReviewList extends React.Component {
@@ -12,16 +13,24 @@ class ReviewList extends React.Component {
   
   render(){
     let reviews =this.props.reviews;
-    reviews = reviews.map(review=>
-      <li key={review.id} className="user-review">
+    reviews = reviews.map(review=>{
+      console.log(review);
+      return <li key={review.id} className="user-review">
       <p className="review-text">
-        {review.text}
+        Review:{review.text}
       </p>
       <p className="review-rating">
-        {review.rating}
+        Rating:{review.rating}
       </p>
+      <p>
+        {review.user_name}
+      </p>
+      {!this.props.location.pathname.includes('/movie') ? <Link
+          to={`/movie/${review.movie_id}`}>
+          Movie
+        </Link> : ''}
     </li>
-    );
+    });
     return(
       <ul>
         {reviews}

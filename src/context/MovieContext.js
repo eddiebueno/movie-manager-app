@@ -89,12 +89,21 @@ export class MovieProvider extends React.Component {
     for (let i =0; i <count; i++){
       searchMovies.push(data["Search"][i])
     }
+    console.log(searchMovies);
+    searchMovies = this.clearDuplicateMovies(searchMovies);
     this.setState({
       ...this.state,
       searchMovies,
       loading:false
     })
   }
+
+  clearDuplicateMovies(movies){
+    return movies.filter((movie,index,self)=>
+      index===self.findIndex((m)=>(m.imdbID === movie.imdbID))
+    )
+  }
+
   render() {
     const {
       userReviews,

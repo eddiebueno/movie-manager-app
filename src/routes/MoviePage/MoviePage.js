@@ -9,7 +9,9 @@ class MoviePage extends React.Component {
   static contextType = MovieContext;
 
   componentDidMount(){
+    this.context.loading = true;
     this.fetchReviews();
+
   }
 
   fetchReviews =()=>{
@@ -17,6 +19,7 @@ class MoviePage extends React.Component {
     MovieApiService.getMovieReviews(id)
       .then(data=>{
         this.context.setReviews(data);
+        this.context.loading = false;
       })
   }
 

@@ -32,7 +32,7 @@ class MoviePage extends React.Component {
         <>
           <MovieInfo history={this.props.history} match={this.props.match}/>
           <ReviewForm updateReviews={this.fetchReviews} match={this.props.match}/>
-          <ReviewList reviews={this.context.userReviews}/>
+          <ReviewList location={this.props.location} reviews={this.context.userReviews}/>
         </>
       )
     }

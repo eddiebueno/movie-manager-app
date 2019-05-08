@@ -3,7 +3,7 @@ import ReviewList from '../../components/ReviewList/ReviewList';
 import MovieApiService from '../../services/movie-api-service';
 import MovieContext from '../../context/MovieContext';
 
-class MoviePage extends React.Component {
+class ReviewsPage extends React.Component {
   static contextType = MovieContext;
 
   componentDidMount(){
@@ -21,11 +21,11 @@ class MoviePage extends React.Component {
     else{
       return(
         <>
-          <ReviewList reviews={this.context.userReviews}/>
+          <ReviewList location={this.props.location} reviews={this.context.userReviews}/>
         </>
       )
     }
   }
 }
 
-export default MoviePage;
+export default ReviewsPage;

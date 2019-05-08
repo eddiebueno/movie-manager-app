@@ -39,12 +39,10 @@ class HomePage extends React.Component {
   }
 
   renderMyReviews() {
-    console.log(this.context);
     const userReviewRoute = `/users/${UserService.getUserId()}/reviews`;
     return (
       <div className="Header__logged-in">
         <Link
-        //TODO:
           to={userReviewRoute}>
           My Reviews
         </Link>

@@ -12,8 +12,7 @@ const MovieContext = React.createContext({
   onSearchSubmit: ()=>{},
   clearSearchResults: ()=>{},
   setReviews: ()=>{},
-
-
+  clearReviews: ()=>{},
   })
 
 export default MovieContext;
@@ -28,7 +27,7 @@ export class MovieProvider extends React.Component {
       selected: null,
       searchTerm: '',
       loading:false,
-      
+
     }
   }
 
@@ -64,8 +63,6 @@ export class MovieProvider extends React.Component {
 
   componentDidUpdate = () =>{
     if (this.state.loading){
-      //TODO:
-      console.log('Fetching...');
       this.apiCall(this.state.searchTerm)
         .then(res=>res.json())
         .then((data=>{
@@ -76,6 +73,10 @@ export class MovieProvider extends React.Component {
 
   setReviews=(userReviews)=>{
     this.setState({userReviews})
+  }
+
+  clearReviews = ()=>{
+    this.setState({userReviews:[]})
   }
 
 
@@ -108,7 +109,8 @@ export class MovieProvider extends React.Component {
       onSearchTermChange,
       onSearchSubmit,
       clearSearchResults,
-      setReviews
+      setReviews,
+      clearReviews,
     } = this;
     return (
       <MovieContext.Provider value={{
@@ -123,6 +125,7 @@ export class MovieProvider extends React.Component {
         onSearchSubmit,
         clearSearchResults,
         setReviews,
+        clearReviews,
       }}>
       {this.props.children}
       </MovieContext.Provider>

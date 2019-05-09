@@ -12,7 +12,7 @@ class MovieInfo extends React.Component {
 
   componentDidMount(){
     const movieId = this.props.match.params.id;
-    let url = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&i=${movieId}`;
+    let url = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&i=${movieId}`;
     fetch(url)
       .then(res=>res.json())
       .then(movie=>{

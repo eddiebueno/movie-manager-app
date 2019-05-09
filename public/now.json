@@ -1,0 +1,14 @@
+{ "version": 2,
+  "alias": "eddiebueno-movie-app",
+     "name": "movie-app",
+     "routes": [
+         {
+           "src": "^/static/(.*)",
+           "dest": "/static/$1"
+         },
+         {
+           "src": ".*",
+           "dest": "/index.html"
+         }
+     ]
+   }

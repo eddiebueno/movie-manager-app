@@ -32,7 +32,7 @@ export class MovieProvider extends React.Component {
   }
 
   apiCall = (searchTerm) =>{
-    let url = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${searchTerm}`;
+    let url = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${searchTerm}`;
     return fetch(url)
   }
 

@@ -1,0 +1,12 @@
+img {
+  vertical-align: top;
+}
+
+p:first-child{
+  margin-top:0;
+}
+
+.movie-info{
+  display: inline-block;
+  margin: 10px;
+}

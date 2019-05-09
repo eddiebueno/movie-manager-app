@@ -2,6 +2,7 @@ import React from 'react';
 import MovieContext from '../../context/MovieContext';
 import MovieApiService from '../../services/movie-api-service';
 import {Button, Textarea} from '../Utils/Utils';
+import './ReviewForm.css';
 
 export default class ReviewForm extends React.Component{
   static contextType = MovieContext;

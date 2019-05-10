@@ -30,7 +30,7 @@ export default class LoginForm extends Component {
         
       })
       .catch(res => {
-        this.setState({ error: res.error});
+        this.setState({ error:res});
       });
   }
 
@@ -55,7 +55,7 @@ export default class LoginForm extends Component {
         onSubmit={this.handleSubmitJwtAuth}
       >
         <div role='alert'>
-          {error && <p className='red'>{error}</p>}
+          {error && <p className='red'>'Something Went Wrong'</p>}
         </div>
         <div className='user_name'>
           <label htmlFor='LoginForm__user_name'>

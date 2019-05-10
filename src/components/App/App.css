@@ -13,3 +13,11 @@
 .App__main {
   margin-top: 20px;
 }
+
+body{
+  font-family: Impact, Haettenschweiler, sans-serif;
+}
+
+p,li{
+  font-family: 'Courier New', Courier, monospace;
+}

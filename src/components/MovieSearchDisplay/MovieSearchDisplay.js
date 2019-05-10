@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieContext from '../../context/MovieContext';
 import Movie from '../Movie/Movie';
+import './MovieSearchDisplay.css';
 
 export default class MovieSearchDisplay extends React.Component {
   static contextType = MovieContext;
@@ -31,7 +32,7 @@ export default class MovieSearchDisplay extends React.Component {
       return (<p>Loading...</p>)
     }else{
       return (
-        <div className="row">
+        <div className="row overflow">
           {newmovies}
         </div>
       )

@@ -18,6 +18,14 @@ ul{
   padding-right: 20px;
 }
 
+.movie-title{
+  list-style: none;
+  white-space: nowrap; 
+  width: 100px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
 .row::before,
 .row::after {
   content: '';

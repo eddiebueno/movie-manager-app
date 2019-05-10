@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieContext from '../../context/MovieContext';
 import {Link} from 'react-router-dom';
-import './Review.css'
+import './ReviewList.css'
 
 
 class ReviewList extends React.Component {
@@ -23,13 +23,13 @@ class ReviewList extends React.Component {
         <img src="https://via.placeholder.com/149x209.png" alt="movie-img"/>
           <div className="movie-info">
             <p className="review-text">
-              Review:{review.text}
+              Review: {review.text}
             </p>
             <p className="review-rating">
-              Rating:{review.rating}
+              Rating: {review.rating}
             </p>
             <p>
-              {review.user_name}
+              User: {review.user_name}
             </p>
             {!this.props.location.pathname.includes('/movie') ? <Link
                 to={`/movie/${review.movie_id}`}>

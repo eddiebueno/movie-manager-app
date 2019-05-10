@@ -5,6 +5,8 @@ import ReviewList from '../../components/ReviewList/ReviewList';
 import MovieApiService from '../../services/movie-api-service';
 import MovieContext from '../../context/MovieContext';
 
+import './MoviePage.css';
+
 class MoviePage extends React.Component {
   static contextType = MovieContext;
 
@@ -31,7 +33,9 @@ class MoviePage extends React.Component {
       return(
         <>
           <MovieInfo history={this.props.history} match={this.props.match}/>
+          <h2 className="review-form-label">Review This Movie</h2>
           <ReviewForm updateReviews={this.fetchReviews} match={this.props.match}/>
+          <h2>Reviews</h2>
           <ReviewList location={this.props.location} reviews={this.context.userReviews}/>
         </>
       )

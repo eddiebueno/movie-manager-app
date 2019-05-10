@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieContext from '../../context/MovieContext';
 import {Hyph} from '../Utils/Utils';
+import './MovieInfo.css';
 
 class MovieInfo extends React.Component {
   static contextType = MovieContext;
@@ -40,10 +41,10 @@ class MovieInfo extends React.Component {
       return(
         <ul>
           <li>
-            <button onClick={() => this.handleGoBack()}>Go Back</button>  
+            <button className='go-back-button' onClick={() => this.handleGoBack()}>Go Back</button>  
           </li>
           <li >
-            <div className="col-6">
+            <div className="col-6 movie-section">
               <div>
                 <h2>{this.state.movie["Title"]}</h2>
                 <span className="movie-rating">
@@ -64,7 +65,7 @@ class MovieInfo extends React.Component {
               </div>
               <img src={this.state.movie["Poster"]} alt={this.state.movie["Title"]} />
             </div>
-            <ul className="col-6">
+            <ul className="col-6 movie-section">
               <li className="director">
                 <p>
                   Directed By: {this.state.movie["Director"]}

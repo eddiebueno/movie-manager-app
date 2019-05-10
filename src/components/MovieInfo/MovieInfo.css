@@ -7,6 +7,10 @@ ul{
   height: 466px;
 }
 
+.go-back-button{
+  width:100%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,6 +20,14 @@ ul{
   max-width: 1000px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.movie-section{
+  height: 600px;
+}
+
+li.director{
+  margin-top:75px;
 }
 
 .row::before,

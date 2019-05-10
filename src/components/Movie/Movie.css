@@ -21,7 +21,7 @@ ul{
 .movie-title{
   list-style: none;
   white-space: nowrap; 
-  width: 100px; 
+  width: 300px; 
   overflow: hidden;
   text-overflow: ellipsis; 
 }

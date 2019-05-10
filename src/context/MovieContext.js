@@ -27,6 +27,7 @@ export class MovieProvider extends React.Component {
       selected: null,
       searchTerm: '',
       loading:false,
+      error:'',
 
     }
   }
@@ -49,6 +50,7 @@ export class MovieProvider extends React.Component {
 
   onSearchSubmit = (e)=>{
     e.preventDefault();
+    // if ()
     const searchTerm = e.currentTarget['search-term'].value;
     this.setState({
       ...this.state,
@@ -68,6 +70,9 @@ export class MovieProvider extends React.Component {
         .then((data=>{
           this.updateData(data)
         }))
+        .catch(err=>{
+          this.setState({error:'Incorrect input'})
+        })
     }
   }
 

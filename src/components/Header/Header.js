@@ -51,7 +51,7 @@ class Header extends React.Component {
           pathname: '/',
           state: {...this.state, display:[]}
         }} replace>
-          Movie Manager
+          Movie Reviews
         </Link>
       </h1>
       {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}

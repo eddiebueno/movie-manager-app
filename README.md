@@ -9,5 +9,6 @@ A user can see all of their reviews.
 
 
 ### Technologies Used
-Frontend: CSS3 and JavaScript ES6 using React
-Backend: [Express server](https://github.com/eddiebueno/movie-server) with a PostgreSQl database
+Frontend: CSS3 and JavaScript ES6 using React  
+Backend: [Express server](https://github.com/eddiebueno/movie-server) with a PostgreSQl database  
+API used: [Online Movie Database API](http://www.omdbapi.com/)

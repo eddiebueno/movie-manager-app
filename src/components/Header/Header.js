@@ -12,8 +12,13 @@ class Header extends React.Component {
   }
 
   renderLogoutLink() {
+    const userReviewRoute = `/users/${UserService.getUserId()}/reviews`;
     return (
       <div className='Header__logged-in'>
+        <Link
+          to={userReviewRoute}>
+          My Reviews
+        </Link>
         <Link
           onClick={this.handleLogoutClick}
           to='/'>
@@ -38,18 +43,6 @@ class Header extends React.Component {
     )
   }
 
-  renderMyReviews() {
-    const userReviewRoute = `/users/${UserService.getUserId()}/reviews`;
-    return (
-      <div className="Header__logged-in">
-        <Link
-          to={userReviewRoute}>
-          My Reviews
-        </Link>
-      </div>
-    )
-  }
-
   render(){  
   return (
     <nav className='Header'>
@@ -61,7 +54,6 @@ class Header extends React.Component {
           Movie Manager
         </Link>
       </h1>
-      {TokenService.hasAuthToken() ? this.renderMyReviews() : '' }
       {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
     </nav>
   );

@@ -15,14 +15,17 @@ class ReviewList extends React.Component {
 
   componentWillUnmount(){
     this.context.clearReviews();
-  }
-
-  componentDidMount(){
     this.setState({
       loading:true
     })
+  }
 
-
+  componentDidMount(){
+    if (this.props.location.pathname.includes('/movie')){
+      this.setState({
+        loading:false
+      })
+    }
   }
 
   getMovieInfo(movieId){

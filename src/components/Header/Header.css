@@ -20,10 +20,12 @@
   justify-content: flex-end;
 }
 
-.Header__not-logged-in a:last-child {
+.Header__not-logged-in a:last-child, .Header__logged-in a:last-child {
   background: rgb(255, 121, 121);
   color: white;
   padding: 5px 15px;
   border-radius: 15px;
   margin-left: 10px;
 }
+
+

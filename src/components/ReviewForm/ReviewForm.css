@@ -10,3 +10,12 @@ textarea{
   background: #fcfcfc;
   
 }
+
+.ReviewForm {
+  width: 400px;
+  height: auto;
+  padding: 40px;
+  margin: 0 auto;
+  border-radius: 3px;
+  border: black 2px;
+}

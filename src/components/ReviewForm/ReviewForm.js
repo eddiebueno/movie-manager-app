@@ -22,7 +22,7 @@ export default class ReviewForm extends React.Component{
 
   render(){
     return(
-      <form className="review-form" onSubmit={this.handleReviewSubmit}>
+      <form className="ReviewForm" onSubmit={this.handleReviewSubmit}>
         <Textarea 
           required
           aria-label='Type a review...'

@@ -19,11 +19,14 @@ ul{
 }
 
 .movie-title{
+  text-align: center;
   list-style: none;
   white-space: nowrap; 
   width: 300px; 
   overflow: hidden;
   text-overflow: ellipsis; 
+  margin:0 auto;
+  margin-top: 10%;
 }
 
 .row::before,

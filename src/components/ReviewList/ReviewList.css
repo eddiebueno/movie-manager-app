@@ -10,3 +10,9 @@ p:first-child{
   display: inline-block;
   margin: 10px;
 }
+
+.review-list{
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}

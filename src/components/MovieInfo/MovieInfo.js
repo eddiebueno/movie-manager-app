@@ -39,29 +39,30 @@ class MovieInfo extends React.Component {
         return <li key={rating.Source}>{`${rating.Source}:${rating.Value}`}</li>
       });
       return(
-        <ul>
-          <li>
+        <div>
+          <div>
             <button className='go-back-button' onClick={() => this.handleGoBack()}>Go Back</button>  
-          </li>
-          <li >
+          </div>
             <div className="col-6 movie-section">
               <div>
                 <h2>{this.state.movie["Title"]}</h2>
-                <span className="movie-rating">
-                  {this.state.movie["Rated"]}
-                </span>
-                <Hyph />
-                <span className="year">
-                  {this.state.movie["Year"]}
-                </span>
-                <Hyph />
-                <span className="genre">
-                  {this.state.movie["Genre"]}
-                </span>
-                <Hyph />
-                <span className="runtime">
-                  {this.state.movie["Runtime"]}
-                </span>
+                <div className="movie-base-info">
+                  <span className="movie-rating">
+                    {this.state.movie["Rated"]}
+                  </span>
+                  <Hyph />
+                  <span className="year">
+                    {this.state.movie["Year"]}
+                  </span>
+                  <Hyph />
+                  <span className="genre">
+                    {this.state.movie["Genre"]}
+                  </span>
+                  <Hyph />
+                  <span className="runtime">
+                    {this.state.movie["Runtime"]}
+                  </span>
+                </div>
               </div>
               <img src={this.state.movie["Poster"]} alt={this.state.movie["Title"]} />
             </div>
@@ -88,8 +89,7 @@ class MovieInfo extends React.Component {
               </li>
               {movieRatings}
             </ul>
-        </li>
-      </ul>
+      </div>
       )
     }
     

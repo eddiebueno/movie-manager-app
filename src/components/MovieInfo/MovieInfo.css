@@ -1,6 +1,9 @@
 ul{
   list-style: none;
 }
+h2{
+  text-align: center;
+}
 
 .poster{
   width: 300px;
@@ -8,7 +11,8 @@ ul{
 }
 
 .go-back-button{
-  width:100%;
+  width:80%;
+  margin: auto;
 }
 
 * {
@@ -30,6 +34,11 @@ li.director{
   margin-top:75px;
 }
 
+.movie-base-info{
+  display: block;
+  text-align: center;
+}
+
 .row::before,
 .row::after {
   content: '';
@@ -42,14 +51,22 @@ li.director{
 
 .col-6{
   float: left;
-  padding-left: 1.04166666%;
-  padding-right: 1.04166666%;
+  padding-left: 10%;
+  padding-right: 10%;
   width: 100%;
+  margin: 0 auto;
+  
+}
+img{
+  display: block;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 640px) {
 
   .col-6 {
     width: 50%;
+    
   }
-}
+
+  }

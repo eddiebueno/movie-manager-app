@@ -100,7 +100,7 @@ class ReviewList extends React.Component {
     }
     else{
       return(
-        <ul>
+        <ul className="review-list">
           {reviews}
         </ul>
       )

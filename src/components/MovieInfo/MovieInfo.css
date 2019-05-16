@@ -71,17 +71,28 @@ img{
 
   }
 
-  @media only screen and (max-width: 320px) {
+  @media only screen and (max-width: 370px) {
 
     input, button,img, textarea {
-      margin:0 auto;
-      width: 300px;
+      margin:0 0 0 0 ;
+      width: 100%;
     }
-    .row, .SearchForm, .LoginForm, .RegistrationForm{
+    .row, .SearchForm, .ReviewForm, .LoginForm, .RegistrationForm, .col-6{
+      padding:1%;
+      width: 100%;
       margin:0 auto;
     }
     h2{
       text-align: center;
+    }
+    .review-list{
+      margin:0;
+      padding:0
+    }
+    .user-review,.poster{
+      width:80%;
+      height: auto;
+      margin-left:10%;
     }
   
     }

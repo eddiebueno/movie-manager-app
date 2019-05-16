@@ -5,17 +5,17 @@ textarea{
   height: auto;
   font-size: 14px;
   text-align: left;
-  padding: 15px;
+  padding: 5%;
   border-radius: 3px;
   background: #fcfcfc;
   
 }
 
 .ReviewForm {
-  width: 400px;
+  width: 100%;
   height: auto;
-  padding: 40px;
-  margin: 0 auto;
+  padding: 5%;
+  margin: 0;
   border-radius: 3px;
   border: black 2px;
 }

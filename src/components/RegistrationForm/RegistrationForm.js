@@ -33,7 +33,6 @@ export default class RegistrationForm extends Component {
       password,
     })
       .then(user => {
-        console.log(this.props);
         this.props.onRegistrationSuccess()
       })
       .catch(res => {

@@ -8,21 +8,32 @@ export default class RegistrationForm extends Component {
     onRegistrationSuccess: () => {}
   }
 
-  state = { error: null }
+  state = 
+    { error: null,
+      user_name: '',
+      password: '' };
 
+
+  handleUserNameChange = user_name =>{
+    this.setState({user_name});
+  }  
+
+  handlePasswordChange = password =>{
+    this.setState({password});
+  }  
+    
   handleSubmit = ev => {
     ev.preventDefault()
     this.setState({ error: null })
-    const { user_name, password } = ev.target
+    const { user_name, password } = this.state;
 
     
     AuthApiService.postUser({
-      user_name: user_name.value,
-      password: password.value,
+      user_name,
+      password,
     })
       .then(user => {
-        user_name.value = ''
-        password.value = ''
+        console.log(this.props);
         this.props.onRegistrationSuccess()
       })
       .catch(res => {
@@ -45,6 +56,7 @@ export default class RegistrationForm extends Component {
             User name <Required />
           </label>
           <Input
+            onChange={(e)=>this.handleUserNameChange(e.target.value)}
             name='user_name'
             type='text'
             required
@@ -56,6 +68,7 @@ export default class RegistrationForm extends Component {
             Password <Required />
           </label>
           <Input
+            onChange={(e)=>this.handlePasswordChange(e.target.value)}
             name='password'
             type='password'
             required

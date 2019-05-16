@@ -10,20 +10,29 @@ export default class LoginForm extends Component {
     onLoginSuccess: () => {}
   }
 
-  state = { error: null }
+  state = 
+    { error: null,
+      user_name:'',
+      password:'' };
+
+  handleUserNameChange = user_name =>{
+    this.setState({user_name});
+  }  
+
+  handlePasswordChange = password =>{
+    this.setState({password});
+  } 
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
     this.setState({ error: null });
-    const { user_name, password } = ev.target;
-
+    const { user_name, password } = this.state;
+    console.log()
     AuthApiService.postLogin({
-      user_name: user_name.value,
-      password: password.value
+      user_name,
+      password
     })
       .then(res => {
-        user_name.value = '';
-        password.value = '';
         TokenService.saveAuthToken(res.authToken);
         UserService.saveUserId(res.userId);
         this.props.onLoginSuccess();
@@ -65,6 +74,7 @@ export default class LoginForm extends Component {
             User name
           </label>
           <Input
+            onChange={(e)=>this.handleUserNameChange(e.target.value)}
             required
             name='user_name'
             id='LoginForm__user_name'>
@@ -75,6 +85,7 @@ export default class LoginForm extends Component {
             Password
           </label>
           <Input
+            onChange={(e)=>this.handlePasswordChange(e.target.value)}
             required
             name='password'
             type='password'

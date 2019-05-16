@@ -73,11 +73,15 @@ img{
 
   @media only screen and (max-width: 320px) {
 
-    input {
+    input, button,img, textarea {
+      margin:0 auto;
       width: 300px;
     }
-    img{
-      width: 300px;
+    .row, .SearchForm, .LoginForm, .RegistrationForm{
+      margin:0 auto;
+    }
+    h2{
+      text-align: center;
     }
   
     }

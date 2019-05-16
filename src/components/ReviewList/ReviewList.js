@@ -21,6 +21,8 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount(){
+    // this checks to see if the user is in movie info page
+    // if they are loading will be set to false
     if (this.props.location.pathname.includes('/movie')){
       this.setState({
         loading:false
@@ -29,6 +31,7 @@ class ReviewList extends React.Component {
   }
 
   getMovieInfo(movieId){
+    // fetch call to get the movie info
     let url = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&i=${movieId}`;
     return fetch(url)
       .then(res=>res.json()
@@ -41,14 +44,13 @@ class ReviewList extends React.Component {
     })
   }
   
-
-  
   render(){
-    // https://via.placeholder.com/149x209.png
+
     let reviews =this.props.reviews;
     
     reviews = reviews.map(review=>{
 
+      // this checks all of the movie info and applies it to the users reviews
       if ((Object.keys(this.state.movieInfo).length !== reviews.length) && this.props.location.pathname.includes('/users')){
         this.getMovieInfo(review.movie_id)
         .then(movie=>{
@@ -61,6 +63,7 @@ class ReviewList extends React.Component {
               }
             }
           }) 
+          // once all of the info is set then end loading
             if(Object.keys(this.state.movieInfo).length === reviews.length){
               this.endLoading();
             }

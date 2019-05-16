@@ -1,5 +1,6 @@
 import config from '../config'
 
+//user services is used to save user info to local storage
 const UserService = {
   saveUserId(userId) {
     window.localStorage.setItem(config.USERID, userId)

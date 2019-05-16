@@ -13,22 +13,6 @@ import './App.css';
 
 
 class App extends React.Component {
-  
-  updateData = (data) =>{
-    let count = 0;
-    let searchMovies = [];
-    if (data["Response"]){
-      count = data["Search"].length
-    }
-    for (let i =0; i <count; i++){
-      searchMovies.push(data["Search"][i])
-    }
-    this.setState({
-      ...this.state,
-      searchMovies,
-      loading:false
-    })
-  }
 
   render(){
     return(
@@ -38,7 +22,6 @@ class App extends React.Component {
       </header>
       <main className='App__main'>
         <Switch>
-        
           <PublicOnlyRoute 
             path={'/login'}
             component={LoginPage}
@@ -59,13 +42,8 @@ class App extends React.Component {
             path='/users/:user_id/reviews' 
             component ={ReviewsPage}
           />
-
-          
-        </Switch>
-        
-
+        </Switch> 
       </main>
-      
       </>
     )
   }

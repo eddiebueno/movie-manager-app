@@ -16,6 +16,7 @@ class MoviePage extends React.Component {
 
   }
 
+  // function to get reviews from api backend
   fetchReviews =()=>{
     const {id} = this.props.match.params;
     MovieApiService.getMovieReviews(id)

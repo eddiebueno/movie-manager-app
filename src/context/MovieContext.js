@@ -32,6 +32,7 @@ export class MovieProvider extends React.Component {
     }
   }
 
+  // specific api call for search
   apiCall = (searchTerm) =>{
     let url = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${searchTerm}`;
     return fetch(url)
@@ -50,7 +51,6 @@ export class MovieProvider extends React.Component {
 
   onSearchSubmit = (e)=>{
     e.preventDefault();
-    // if ()
     const searchTerm = e.currentTarget['search-term'].value;
     this.setState({
       ...this.state,
@@ -64,6 +64,7 @@ export class MovieProvider extends React.Component {
   }
 
   componentDidUpdate = () =>{
+    // will check to see if loading, if it is, will run the api call on the search term
     if (this.state.loading){
       this.apiCall(this.state.searchTerm)
         .then(res=>res.json())
@@ -86,6 +87,7 @@ export class MovieProvider extends React.Component {
 
 
   updateData = (data) =>{
+    // this functions updates the state with the given searched movies
     let count = 0;
     let searchMovies = [];
     if (data["Response"]){
@@ -103,6 +105,8 @@ export class MovieProvider extends React.Component {
   }
 
   clearDuplicateMovies(movies){
+    // this functions clears duplicate movies
+    // the omdb api sometimes sends duplicates
     return movies.filter((movie,index,self)=>
       index===self.findIndex((m)=>(m.imdbID === movie.imdbID))
     )

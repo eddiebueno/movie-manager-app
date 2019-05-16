@@ -6,6 +6,7 @@ import MovieContext from '../../context/MovieContext';
 class ReviewsPage extends React.Component {
   static contextType = MovieContext;
 
+  // function to recieve the users specific reviews
   componentDidMount(){
     const {user_id} = this.props.match.params;
     MovieApiService.getUserReviews(user_id)
